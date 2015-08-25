@@ -1,0 +1,61 @@
+$borderColor: #d5d5d5;
+
+.funkopt-container {
+	border: solid 1px $borderColor;
+	background-color: #fff;
+	.is-hidden {
+		display:none;
+	}
+	.funkopt-header {
+		padding:10px;
+		padding-bottom: 0px;
+		.logo {
+			float:left;
+		}
+		.search {
+			float:right;
+			#funkopt-search-input {
+				height: 35px;
+			    width: 200px;
+			    box-shadow: none;
+			    border: none;
+			}
+		}
+	}
+	.funkopt-tabs {
+		width: 180px;
+		float: left;
+		padding: 0px;
+    	border: none;
+    	border-bottom: none;
+		margin-top: 10px;
+		position: absolute;
+		.nav-tab {
+			width: 100%;
+		    line-height: inherit;
+		    padding: 0px;
+		    padding-bottom: 10px;
+		    padding-top: 5px;
+		    padding-left: 10px;
+		    border-bottom: solid 1px #d5d5d5;
+		    border-left: none;
+		    margin-top: -1px;
+		}
+	}
+
+	.funkopt-content {
+	    border: solid 1px #d5d5d5;
+	    margin-left: 200px;
+	    margin-top: 10px;
+	    margin-right: 10px;
+	    margin-bottom: 10px;
+
+		h3 {
+			background-color: red;
+    		margin-top: -5px;
+		}		
+		.form-table {
+			clear: none;
+		}    
+	}
+}
