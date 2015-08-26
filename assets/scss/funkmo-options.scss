@@ -1,24 +1,46 @@
 $borderColor: #d5d5d5;
+$white: #fff;
+$brown: #776b5e;
+$lightbrown: #f6f0ec;
+$green: #54bc75;
+$yellow: #ebc85e;
+$red: #e55e3a;
+$blue: #e55e3a;
 
 .funkopt-container {
 	border: solid 1px $borderColor;
-	background-color: #fff;
+	background-color: $white;
 	.is-hidden {
 		display:none;
 	}
 	.funkopt-header {
 		padding:10px;
 		padding-bottom: 0px;
+		background-color: $brown;
+    	min-height: 50px;
+    	color: $white;
 		.logo {
 			float:left;
 		}
 		.search {
 			float:right;
+		    background-color: inherit;
 			#funkopt-search-input {
 				height: 35px;
 			    width: 200px;
 			    box-shadow: none;
-			    border: none;
+			    border: 1px solid #e5d4c2;
+			    background: rgba(255,255,255, 0.9);
+			    -webkit-border-radius: 4px;
+			    -moz-border-radius: 4px;
+			    border-radius: 5px;
+			    padding: 0 16px;
+			    font-size: 16px;
+			    color: #8e8071;
+			    width: 100%;
+			    &:focus {
+			    	background: $white;
+			    }
 			}
 		}
 	}
@@ -28,18 +50,22 @@ $borderColor: #d5d5d5;
 		padding: 0px;
     	border: none;
     	border-bottom: none;
-		margin-top: 10px;
+		margin-top: 14px;
 		position: absolute;
 		.nav-tab {
 			width: 100%;
 		    line-height: inherit;
-		    padding: 0px;
-		    padding-bottom: 10px;
-		    padding-top: 5px;
+		    padding-right: 5px;
+		    padding-bottom: 15px;
+		    padding-top: 12px;
 		    padding-left: 10px;
-		    border-bottom: solid 1px #d5d5d5;
-		    border-left: none;
-		    margin-top: -1px;
+		    border-bottom: solid 1px $borderColor;
+		    background: $lightbrown;
+		    color: #776b5e;
+		    border-left: solid $brown;
+		    &:active, &:hover, &.nav-tab-active {
+		    	border-left: solid $green;
+		    }
 		}
 	}
 
@@ -49,13 +75,14 @@ $borderColor: #d5d5d5;
 	    margin-top: 10px;
 	    margin-right: 10px;
 	    margin-bottom: 10px;
-
-		h3 {
-			background-color: red;
-    		margin-top: -5px;
-		}		
+	    .funkopt-section-info {
+	    	background: $green;	
+	    	color: $white;
+	    }
 		.form-table {
 			clear: none;
 		}    
 	}
 }
+
+@import 'form'; // form  

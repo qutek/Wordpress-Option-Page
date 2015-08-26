@@ -14,6 +14,10 @@
      */
     var FunkmoSettings = {
         init : function () {
+            
+            // color picker
+            $('.wp-color-picker-field').wpColorPicker();
+
             // indexing
             $(element.row).each( function() {
                 element.itemsIndexed.push( $( this ).text().replace( /\s{2,}/g, ' ' ).toLowerCase() );
@@ -65,23 +69,31 @@
                 return true;
             }
 
-            $(element.row).each( function() {
-                element.item = $( this );
-                element.item.html( element.item.html().replace( /<span class="highlight">([^<]+)<\/span>/gi, '$1' ) );
-            });
+            // $(element.row).each( function() {
+            //     element.item = $( this );
+            //     // element.item.html( element.item.html().replace( /<span class="highlight">([^<]+)<\/span>/gi, '$1' ) );
+            //     // element.item.find( '.description' ).html( element.item.find( '.description' ).html().replace( new RegExp( searchVal+'(?!([^<]+)?>)', 'gi' ), '<span class="highlight">$&</span>' ) );
+            // });
+            
+            $(element.container).find('.funkopt-section-title').text('Search result for : ' + $(element.searchInput).val());
+            $(element.container).find('.funkopt-section-desc').text('');
 
             var searchVal = $.trim( $(element.searchInput).val() ).toLowerCase();
             if( searchVal.length ) {
                 for( var i in element.itemsIndexed ) {
                     element.item = $(element.row).eq( i );
-                    if( element.itemsIndexed[ i ].indexOf( searchVal ) != -1 )
-                        element.item.removeClass( 'is-hidden' ).html( element.item.html().replace( new RegExp( searchVal+'(?!([^<]+)?>)', 'gi' ), '<span class="highlight">$&</span>' ) );
-                    else
+                    if( element.itemsIndexed[ i ].indexOf( searchVal ) != -1 ){
+                        element.item.removeClass( 'is-hidden' );
+                        // element.item.find( '.description' ).html( element.item.find( '.description' ).html().replace( new RegExp( searchVal+'(?!([^<]+)?>)', 'gi' ), '<span class="highlight">$&</span>' ) );
+                    } else {
                         element.item.addClass( 'is-hidden' );
+                    }
                 }
             } else { 
-                var active = $(element.tabs).filter( '.nav-tab-active' ).attr('data-group');
-                $(element.row).not('.'+active).addClass( 'is-hidden' );
+                var activetab = $(element.tabs).filter( '.nav-tab-active' ).attr('data-group');
+                $(element.row).not('.'+activetab).addClass( 'is-hidden' );
+                $(element.container).find('.funkopt-section-title').text($('#'+activetab+'-tab').text());
+                $(element.container).find('.funkopt-section-desc').text($('#'+activetab+'-tab').attr('data-desc'));
                 
                 // this.getActiveTab();
             }

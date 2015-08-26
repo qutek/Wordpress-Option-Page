@@ -31,22 +31,22 @@ class SampleFunkmoSettings {
         $this->settings_api->admin_init();
     }
     function admin_menu() {
-        add_options_page( 'Settings API', 'Settings API', 'delete_posts', $this->plugin_name, array($this, 'plugin_page') );
+        add_options_page( 'Options Page', 'Options Page', 'delete_posts', $this->plugin_name, array($this, 'plugin_page') );
     }
     function get_settings_sections() {
         $sections = array(
             array(
-                'id' => 'wedevs_basics',
+                'id' => 'funkopt_basics',
                 'title' => __( 'Basic Settings', $this->plugin_name ),
                 'desc' => __( 'Ini Basic Settings', $this->plugin_name ),
             ),
             array(
-                'id' => 'wedevs_advanced',
+                'id' => 'funkopt_advanced',
                 'title' => __( 'Advanced Settings', $this->plugin_name ),
                 'desc' => __( 'Ini Advanced Settings', $this->plugin_name ),
             ),
             array(
-                'id' => 'wedevs_others',
+                'id' => 'funkopt_others',
                 'title' => __( 'Other Settings', 'wpuf' )
             )
         );
@@ -60,7 +60,7 @@ class SampleFunkmoSettings {
      */
     function get_settings_fields() {
         $settings_fields = array(
-            'wedevs_basics' => array(
+            'funkopt_basics' => array(
                 array(
                     'name'              => 'text_val',
                     'label'             => __( 'Text Input', $this->plugin_name ),
@@ -140,7 +140,7 @@ class SampleFunkmoSettings {
                     )
                 )
             ),
-            'wedevs_advanced' => array(
+            'funkopt_advanced' => array(
                 array(
                     'name'    => 'color',
                     'label'   => __( 'Color', $this->plugin_name ),
@@ -200,7 +200,7 @@ class SampleFunkmoSettings {
                     'default' => ''
                 )
             ),
-            'wedevs_others' => array(
+            'funkopt_others' => array(
                 array(
                     'name'    => 'text',
                     'label'   => __( 'Text Input', $this->plugin_name ),

@@ -1,7 +1,7 @@
 <?php
 /**
- * Settings API wrapper class
- * based on https://github.com/tareq1988/wordpress-settings-api-class/
+ * Option page wrapper class
+ * lafif@astahdziq.in
  */
 if ( !class_exists( ' FunkmoSettings' ) ):
 class  FunkmoSettings {
@@ -177,9 +177,16 @@ class  FunkmoSettings {
                 $html = '<fieldset>';
                 foreach ( $args['options'] as $key => $label ) {
                     $checked = isset( $value[$key] ) ? $value[$key] : '0';
-                    $html .= sprintf( '<label for="funk-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
-                    $html .= sprintf( '<input type="checkbox" class="checkbox" id="funk-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
-                    $html .= sprintf( '%1$s</label><br>',  $label );
+                    // $html .= sprintf( '<label for="funk-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
+                    // $html .= sprintf( '<input type="checkbox" class="checkbox" id="funk-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
+                    // $html .= sprintf( '%1$s</label><br>',  $label );
+                    $html .= '<div class="option-container">';
+                    $html .= sprintf( '<label for="funk-%1$s[%2$s][%3$s]" class="option">', $args['section'], $args['id'], $key );
+                    $html .= sprintf( '<input type="checkbox" id="funk-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
+                    $html .= '<span class="checkbox"></span>';
+                    $html .= '</label>';
+                    $html .= sprintf( '<span class="desc-label">%1$s</span>',  $label );
+                    $html .= '</div>';
                 }
                 $html .= $this->get_field_description( $args );
                 $html .= '</fieldset>';
@@ -189,10 +196,17 @@ class  FunkmoSettings {
             case 'checkbox':
                 $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
                 $html = '<fieldset>';
-                $html .= sprintf( '<label for="funk-%1$s[%2$s]">', $args['section'], $args['id'] );
-                $html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
-                $html .= sprintf( '<input type="checkbox" class="checkbox" id="funk-%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ) );
-                $html .= sprintf( '%1$s</label>', $args['desc'] );
+                // $html .= sprintf( '<label for="funk-%1$s[%2$s]">', $args['section'], $args['id'] );
+                // $html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
+                // $html .= sprintf( '<input type="checkbox" class="checkbox" id="funk-%1$s[%2$s]" name="%1$s[%2$s]" value="on" %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ) );
+                // $html .= sprintf( '%1$s</label>', $args['desc'] );
+                $html .= '<div class="option-container">';
+                $html .= sprintf( '<label for="funk-%1$s[%2$s]" class="option">', $args['section'], $args['id'] );
+                $html .= sprintf( '<input type="checkbox" name="%1$s[%2$s]" value="on" %3$s>', $args['section'], $args['id'], checked( $value, 'on', false ) );
+                $html .= '<span class="checkbox"></span>';
+                $html .= '</label>';
+                $html .= sprintf( '<span class="desc-label">%1$s</span>', $args['desc'] );
+                $html .= '</div>';
                 $html .= '</fieldset>';
 
                 break;
@@ -201,9 +215,16 @@ class  FunkmoSettings {
                 $value = $this->get_option( $args['id'], $args['section'], $args['std'] );
                 $html = '<fieldset>';
                 foreach ( $args['options'] as $key => $label ) {
-                    $html .= sprintf( '<label for="funk-%1$s[%2$s][%3$s]">',  $args['section'], $args['id'], $key );
-                    $html .= sprintf( '<input type="radio" class="radio" id="funk-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
-                    $html .= sprintf( '%1$s</label><br>', $label );
+                    // $html .= sprintf( '<label for="funk-%1$s[%2$s][%3$s]">',  $args['section'], $args['id'], $key );
+                    // $html .= sprintf( '<input type="radio" class="radio" id="funk-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+                    // $html .= sprintf( '%1$s</label><br>', $label );
+                    $html .= '<div class="option-container">';
+                    $html .= sprintf( '<label for="funk-%1$s[%2$s][%3$s]" class="option">',  $args['section'], $args['id'], $key );
+                    $html .= sprintf( '<input type="radio" id="funk-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+                    $html .= '<span class="radio"></span>';
+                    $html .= '</label>';
+                    $html .= sprintf( '<span class="desc-label">%1$s</span><br>', $label );
+                    $html .= '</div>';
                 }
                 $html .= $this->get_field_description( $args );
                 $html .= '</fieldset>';
@@ -213,11 +234,13 @@ class  FunkmoSettings {
             case 'select':
                 $value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
                 $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : 'regular';
-                $html = sprintf( '<select class="%1$s" name="%2$s[%3$s]" id="%3$s">', $size, $args['section'], $args['id'] );
+                $html = '<div class="select">';
+                $html .= sprintf( '<select class="%1$s" name="%2$s[%3$s]" id="%3$s">', $size, $args['section'], $args['id'] );
                 foreach ( $args['options'] as $key => $label ) {
                     $html .= sprintf( '<option value="%s"%s>%s</option>', $key, selected( $value, $key, false ), $label );
                 }
                 $html .= sprintf( '</select>' );
+                $html .= sprintf( '</div>' );
                 $html .= $this->get_field_description( $args );
 
                 break;
@@ -434,7 +457,7 @@ class  FunkmoSettings {
         
         $html = '<div class="funkopt-header">';
         $html .= '<div class="logo">Logo</div>';
-        $html .= '<div class="search"><input type="text" id="funkopt-search-input"></div>';
+        $html .= '<div class="search"><input type="text" id="funkopt-search-input" placeholder="Search..."></div>';
         $html .= '<div class="clear"></div>';
         $html .= '</div>';
 
