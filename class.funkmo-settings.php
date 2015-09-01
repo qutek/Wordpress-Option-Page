@@ -53,9 +53,9 @@ class  FunkmoSettings {
         wp_enqueue_style( 'wp-color-picker' );
 
         if($this->style)
-            wp_enqueue_style( 'funkmo-options', plugins_url('assets/css/funkmo-options.css', __FILE__) );
+            wp_enqueue_style( 'funkmo-settings', plugins_url('assets/css/funkmo-settings.css', __FILE__) );
 
-        wp_enqueue_script( 'admin', plugins_url( 'assets/funkmo-options.js', __FILE__ ), array('jquery'), '', true );
+        wp_enqueue_script( 'funkmo-settings', plugins_url( 'assets/funkmo-settings.js', __FILE__ ), array('jquery'), '', true );
 
         wp_enqueue_media();
         wp_enqueue_script( 'wp-color-picker' );
