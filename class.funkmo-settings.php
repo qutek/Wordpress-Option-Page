@@ -3,8 +3,8 @@
  * Option page wrapper class
  * lafif@astahdziq.in
  */
-if ( !class_exists( ' FunkmoSettings' ) ):
-class  FunkmoSettings {
+if ( !class_exists( 'FunkmoSettings' ) ):
+class FunkmoSettings {
 
     private $plugin_name;
 
