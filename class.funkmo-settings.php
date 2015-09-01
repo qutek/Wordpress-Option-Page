@@ -35,8 +35,16 @@ class  FunkmoSettings {
 
         $this->plugin_name = $plugin_name;
         $this->section_id = $plugin_name;
-        $this->style = true;
+        // $this->style = true;
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+    }
+    /**
+     * Set settings sections
+     *
+     * @param array   $sections setting sections array
+     */
+    function set_style( $style ) {
+        $this->style = $style;
     }
     /**
      * Enqueue scripts and styles

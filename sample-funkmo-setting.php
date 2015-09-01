@@ -25,6 +25,7 @@ class SampleFunkmoSettings {
     }
     function admin_init() {
         //set the settings
+        $this->settings_api->set_style( true );
         $this->settings_api->set_sections( $this->get_settings_sections() );
         $this->settings_api->set_fields( $this->get_settings_fields() );
         //initialize settings
